@@ -80,3 +80,31 @@ console.log(rectangle.getArea());
 const triangle = new Triangle(20, 20, 'red');
 triangle.draw();
 console.log(triangle.getArea());
+
+class Rectangle extends Shape{}
+class Triangle extends Shape {}
+
+const rectangle = new Rectangle(20, 20, 'blue');
+rectangle.draw();
+console.log(rectangle.getArea());
+const triangle = new Triangle(20, 20, 'red');
+triangle.draw();
+console.log(triangle.getArea());
+
+class User {
+    constructor(firstName, lastName ,age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ago = ago;
+    }
+
+    get age() {
+        return this._ago;
+    }
+
+    set age(value) {
+        this._ago = value < 0 ? 0 : value;
+    }
+}
+
+const user1 = new User(st)
