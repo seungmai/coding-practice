@@ -1,63 +1,55 @@
-plus = function(a, b, callback) {
-    var result = a + b
-    callback(result);
-}
+'use strict'
 
-plus(5, 10, function(res) {
-    console.log(res);
+const promise = new Promise((resolve, reject) => {
+  console.log('doing something...');
+  setTimeout(() => {
+    resolve('ellie');
+  }, 2000);
+});
+
+promise.then(value => {
+  console.log(value);
 })
 
-console.clear();
+promise
+  .then(value => {
+    console.log(value);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+  .finally(() => {
+    console.log('finally')
+  });
 
-a = function(a, b, callback) {
-    callback(a+b, a-b);
-}
+  const fetchNumber = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(1), 1000);
+  });
 
-a(5, 10, function(res1, res2) {
-    console.log(res1);
-    console.log(res2);
-})
-
-abc = function(a, b, c , callback) {
-    callback(a+b, a+c , a-b);
-}
-
-abc(10, 20, 23, function(rel1, rel2, rel3){ 
-    console.log(rel1);
-    console.log(rel2);
-    console.log(rel3);
-})
-
-function func() {
-    function cb() {
-        console.log("리턴");
-    }
-    return cb;
-}
-func();
-func()();
-
-var myCb = func();
-console.log(typeof (myCb));
-myCb();
-
-function func() {
-    return function () {
-        console.log("리턴");
-    };
-}
-func1()();
-
-var myCb1 = func1();
-myCb1;
-
-function callback(cb) {
-    cb();
-}
-
-function add(x, y){
-    let sum = x + y;
-    callback(function () {
-        console.log(sum);
+  fetchNumber
+    .then(num => num * 2)
+    .then(num => num * 3)
+    .then(num => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(num - 1), 1000);
+      });
     })
-}
+    .then(num => console.log(num));
+
+    const getHen = () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve('🐓'), 1000);
+    });
+    const getEgg = hen =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve(`${hen} => 🥚`), 1000);
+    });
+    const cook = egg =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve(`${egg} => 🍳`), 1000);
+    });  
+
+      getHen()
+      .then(hen => getEgg(hen))
+      .then(egg => cook(egg))
+      .then(meal => console.log(meal));

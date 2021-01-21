@@ -49,4 +49,4 @@ console.log(obj);
 rabbit.jump();
 
 console.log(rabbit.birthDate.getDate());
-console.log(obj.birthDate.getDate());
+console.log(obj.birthDate.getDate);
